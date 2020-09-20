@@ -1,10 +1,5 @@
 package com.sda.spring.dto;
 
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedBy;
-
-import javax.persistence.Column;
 import java.time.LocalDateTime;
 
 public class CompanyInfoDto {

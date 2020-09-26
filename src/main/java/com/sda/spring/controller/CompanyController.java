@@ -4,6 +4,7 @@ import com.sda.spring.components.CustomFaker;
 import com.sda.spring.dto.CompanyCreateDto;
 import com.sda.spring.dto.CompanyInfoDto;
 import com.sda.spring.exception.CompanyNotFoundException;
+import com.sda.spring.model.Company;
 import com.sda.spring.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,10 +33,11 @@ public class CompanyController {
         return ResponseEntity.ok(companyService.create(companyCreateDto, user));
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/getAll")
     public ResponseEntity<List<CompanyInfoDto>> getAllCompanies(
             @RequestParam(defaultValue = "0") Integer pageNo,
-            @RequestParam(defaultValue = "5") Integer pageSize,
+            @RequestParam(defaultValue = "50") Integer pageSize,
             @RequestParam(defaultValue = "name") String sortBy) {
 
         return ResponseEntity.ok(companyService.getAllCompanies(pageNo,pageSize,sortBy));

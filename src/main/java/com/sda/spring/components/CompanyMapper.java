@@ -18,14 +18,14 @@ import java.util.List;
 @Component
 public class CompanyMapper {
 
-    public static Company toEntity(CompanyCreateDto companyCreateDto) {
+    public static Company toEntity(CompanyCreateDto companyCreateDto, String userName) {
         Company company = new Company();
         company.setAddress(companyCreateDto.getAddress());
         company.setEmail(companyCreateDto.getEmail());
         company.setName(companyCreateDto.getName());
         company.setPhoneNumber(companyCreateDto.getPhoneNumber());
         company.setRegistrationNumber(companyCreateDto.getRegistrationNumber());
-
+        company.setCreatedBy(userName);
         return company;
     }
 

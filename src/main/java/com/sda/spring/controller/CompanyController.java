@@ -37,6 +37,7 @@ public class CompanyController {
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "5") Integer pageSize,
             @RequestParam(defaultValue = "name") String sortBy) {
+
         return ResponseEntity.ok(companyService.getAllCompanies(pageNo,pageSize,sortBy));
     }
 

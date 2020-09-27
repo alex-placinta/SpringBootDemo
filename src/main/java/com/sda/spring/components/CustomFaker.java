@@ -26,7 +26,7 @@ public class CustomFaker {
             Company company = new Company();
             company.setAddress(faker.address().fullAddress());
             company.setCreatedBy(faker.name().username());
-            company.setRegistrationNumber(faker.idNumber().toString());
+            company.setRegistrationNumber(faker.idNumber().valid());
             company.setEmail(faker.bothify("????##@gmail.com"));
             company.setPhoneNumber(faker.phoneNumber().cellPhone());
             company.setName(faker.name().title());

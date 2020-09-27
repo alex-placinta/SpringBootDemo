@@ -19,4 +19,6 @@ public interface CompanyService {
     void populateDb(List<Company> companies);
 
     CompanyInfoDto findById(Integer id);
+
+    CompanyInfoDto findByNameAndRegistration(String name, String registration);
 }

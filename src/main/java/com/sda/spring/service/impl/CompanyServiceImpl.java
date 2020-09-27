@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<CompanyInfoDto> getAllCompanies() {
-        return (List)repository.findAll();
+        return companyMapper.toDtoList(repository.findAll());
     }
 
     @Override
@@ -65,6 +66,17 @@ public class CompanyServiceImpl implements CompanyService {
        }
     }
 
+    @Override
+    public CompanyInfoDto findByNameAndRegistration(String name, String registrationNumber) {
+        Optional<Company> company = repository.findByNameAndRegistrationNumber(name, registrationNumber);
 
+        if(!company.isPresent()) {
+            throw new CompanyNotFoundException("Company with entered name or ID does not exist.");
+        } else {
+            return companyMapper.toDto(company.get());
+        }
     }
+
+
+}
 

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
 import java.security.Principal;
 import java.util.List;
 
@@ -56,4 +57,13 @@ public class CompanyController {
             return ResponseEntity.ok(companyService.findById(id));
         }
     }
+
+    @GetMapping("/findByNameAndReg")
+    public  ResponseEntity<CompanyInfoDto> findByNameAndRegistration(@RequestParam @NotNull String name, @RequestParam @NotNull String registration) {
+
+        return ResponseEntity.ok(companyService.findByNameAndRegistration(name, registration));
+    }
+
+
+
 }
